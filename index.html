@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./style/css/styles.css">
+        <style>
+            @keyframes shake {
+                0% { transform: translate(1px, 1px) rotate(0deg) scale(1); }
+                10% { transform: translate(-1px, -2px) rotate(-1deg) scale(1.1); }
+                20% { transform: translate(-3px, 0px) rotate(1deg) scale(1.2); }
+                30% { transform: translate(3px, 2px) rotate(0deg) scale(1.3); }
+                40% { transform: translate(1px, -1px) rotate(1deg) scale(1.4); }
+                50% { transform: translate(-1px, 2px) rotate(-1deg) scale(1.5); }
+                60% { transform: translate(-3px, 1px) rotate(0deg) scale(1.6); }
+                70% { transform: translate(3px, 1px) rotate(-1deg) scale(1.7); }
+                80% { transform: translate(-1px, -1px) rotate(1deg) scale(1.8); }
+                90% { transform: translate(1px, 2px) rotate(0deg) scale(1.9); }
+                100% { transform: translate(1px, -2px) rotate(-1deg) scale(2); }
+            }
+
+            #yesButton {
+                transition: all 0.3s ease;
+            }
+
+            #yesButton.shake {
+                animation: shake 0.5s;
+                animation-iteration-count: infinite;
+            }
+
+            .container {
+                text-align: center;
+                position: relative;
+                z-index: 1;
+                width: 800px;
+                height: 600px;
+                margin: 0 auto;
+            }
+        </style>
+    </head> 
+    <body>
+        <div class="container">
+            <div>
+                <h1 class="header_text" id="headerText">I askin' you to be my forever</h1>
+            </div>
+            <div class="gif_container">
+                <img src="https://media.giphy.com/media/LnKonfpQ44fNvuGLkA/giphy.gif" alt="Cute animated illustration">
+            </div>
+            <div class="buttons">
+                <button class="btn" id="yesButton" onclick="nextPage()">Yes</button>
+                <button class="btn" id="noButton" onmouseover="moveButton()">No</button>
+                <script>
+                    let noCount = 0;
+                    const messages = [
+                        "Will you be my forever?",
+                        "Are you sure you want to say no?",
+                        "Think about our future together!",
+                        "I want to spend my life with you!",
+                        "We could build a beautiful life!",
+                        "I'll be very sad without you :(",
+                        "My heart beats only for you!",
+                        "Let's write our forever story!",
+                        "Is that really your answer?",
+                        "We're meant to be together!",
+                        "You're my one and only!",
+                        "Our love story can't end here!",
+                        "We're perfect for each other!",
+                        "Imagine our life together!",
+                        "I'll love you forever!",
+                        "Let's make forever happen!",
+                        "You're all I've ever wanted!",
+                        "My forever won't be complete without you...",
+                        "My heart only beats for you!",
+                        "Please say yes to forever! 🥺"
+                    ];
+
+                    const buttonMessages = [
+                        ["Yes", "No"],
+                        ["Sure!", "Nope"],
+                        ["Absolutely!", "No thanks"],
+                        ["Of course!", "Not really"],
+                        ["I'd love to!", "Nah"],
+                        ["Yes please!", "Pass"],
+                        ["100% Yes!", "Still no"],
+                        ["Definitely!", "Never"],
+                        ["Count me in!", "No way"],
+                        ["Let's do it!", "Not happening"],
+                        ["Yes yes yes!", "Negative"],
+                        ["Sign me up!", "Nope nope"],
+                        ["You bet!", "Still thinking no"],
+                        ["Without a doubt!", "Definitely not"],
+                        ["Oh yes!", "Not interested"],
+                        ["YES!!!", "NO!!!"],
+                        ["Please yes!", "Please no"],
+                        ["I'm in!", "I'm out"],
+                        ["Accept!", "Decline"],
+                        ["YES PLEASE!", "NO WAY!"]
+                    ];
+
+                    function nextPage() {
+                        window.location.href = "yes.html";
+                    }
+                    
+                    function moveButton() {
+                        const container = document.querySelector(".container");
+                        const noBtn = document.getElementById('noButton');
+                        const yesBtn = document.getElementById('yesButton');
+                        const padding = 20;
+                        
+                        // Use container dimensions for movement boundaries
+                        const maxX = container.clientWidth - noBtn.offsetWidth - padding;
+                        const maxY = container.clientHeight - noBtn.offsetHeight - padding;
+                        
+                        // Generate random position within the container
+                        const x = Math.random() * maxX + padding;
+                        const y = Math.random() * maxY + padding;
+                        
+                        noBtn.style.left = `${x}px`;
+                        noBtn.style.top = `${y}px`;
+                        
+                        const headerText = document.getElementById('headerText');
+                        noCount++;
+                        
+                        if (noCount <= messages.length) {
+                            headerText.textContent = messages[noCount - 1];
+                            yesBtn.textContent = buttonMessages[noCount - 1][0];
+                            noBtn.textContent = buttonMessages[noCount - 1][1];
+                            yesBtn.classList.add('shake');
+                            
+                            // Increase size with each hover
+                            yesBtn.style.transform = `scale(${1 + noCount * 0.1})`;
+                            yesBtn.style.fontSize = `${20 + noCount * 2}px`;
+                            yesBtn.style.padding = `${20 + noCount * 3}px ${40 + noCount * 3}px`;
+                        }
+                    }
+
+                    // Remove shake when animation ends
+                    document.getElementById('yesButton').addEventListener('animationend', function() {
+                        this.classList.remove('shake');
+                    });
+                </script> 
+            </div>
+        </div>
+    </body> 
+</html>

@@ -1,0 +1,70 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #F8C8DC;
+    background-image: url('../images/cat_background.jpg');
+    background-size: contain;
+    background-repeat: repeat;
+}
+
+.header_text{
+    font-family: 'Nunito';
+    font-size: 55px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /* Add text shadow for thickness and dark pink lining */
+    text-shadow: 2px 2px 4px #ff6ebb;
+}
+
+.text {
+    font-family: 'Nunito';
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    /* Add text shadow for thickness and dark pink lining */
+    text-shadow: 2px 2px 4px #ff6ebb;
+}
+
+.gif_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.gif_container img {
+    width: 350px;
+    height: auto;
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+    .header_text {
+        font-size: 40px;
+        margin-top: 15px;
+        padding: 0 15px;
+    }
+
+    .text {
+        font-size: 24px;
+        padding: 0 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .gif_container {
+        margin: 25px 0;
+    }
+
+    .gif_container img {
+        width: 300px;
+    }
+}
